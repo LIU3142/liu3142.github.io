@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://afterwinter.net').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","padding":18,"offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="ES6不支持ES6可以用Babel -&amp;gt;browser.js在线转换  变量 函数 数组 字符串 面向对象 Promise generator 模块化">
+<meta name="keywords" content="ES6,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6梗概">
+<meta property="og:url" content="https:&#x2F;&#x2F;afterwinter.net&#x2F;2019&#x2F;12&#x2F;06&#x2F;ES6&#x2F;index.html">
+<meta property="og:site_name" content="Bellec&#39; Notes">
+<meta property="og:description" content="ES6不支持ES6可以用Babel -&amp;gt;browser.js在线转换  变量 函数 数组 字符串 面向对象 Promise generator 模块化">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-10T12:10:19.786Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://afterwinter.net/2019/12/06/ES6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ES6梗概 | Bellec' Notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bellec' Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">4</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/liu3142" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://afterwinter.net/2019/12/06/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/liu3142/CDN@master/img/cat_w.png">
+      <meta itemprop="name" content="Bellec">
+      <meta itemprop="description" content="人间俯仰成今古，何地他时始惘然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bellec' Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6梗概
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-06 16:09:19" itemprop="dateCreated datePublished" datetime="2019-12-06T16:09:19+08:00">2019-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-10 20:10:19" itemprop="dateModified" datetime="2019-12-10T20:10:19+08:00">2019-12-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><p>不支持ES6可以用Babel -&gt;browser.js在线转换</p>
+<ol>
+<li>变量</li>
+<li>函数</li>
+<li>数组</li>
+<li>字符串</li>
+<li>面向对象</li>
+<li>Promise</li>
+<li>generator</li>
+<li>模块化<a id="more"></a>
+<h2 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h2>var </li>
+<li>可以重复声明</li>
+<li>无法限制修改</li>
+<li>没有块级作用域<br>{}就是一个语法块</li>
+</ol>
+<p>let     不能重复声明，变量-可以修改，块级作用域<br>const    不能重复声明，常量-不能修改，块级作用域</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ol>
+<li>如果只有一个参数()</li>
+<li>只有一个return<br>window.onload=()=&gt;{</li>
+</ol>
+<p>}<br>window.onload = function (){</p>
+<p>}</p>
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><ol>
+<li>参数扩展/数组展开</li>
+<li>默认参数</li>
+</ol>
+<p>参数扩展：<br>1.收集参数<br>    function show(a,b,…args){}</p>
+<pre><code>* Rest Parameter
+</code></pre><p>2.展开数组</p>
+<p> let arr=[1,2,3];</p>
+<p> show(…arr);<br>//等同于show(1,2,3)<br> function show(a,b,c){<br>     alert(a);<br>     alert(b);<br>     alert(c);<br>}</p>
+<h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><ol>
+<li>左右两边结构必须一样</li>
+<li>右边必须是个东西</li>
+<li>声明赋值必须 </li>
+</ol>
+<p>let [a,b,c] = [1,2,3]<br>console.log(a,b,c);</p>
+<p>JSON也可以<br>let {a,c,d}={a:12,c:5,d:6}</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h4 id="map-映射-一个对一个"><a href="#map-映射-一个对一个" class="headerlink" title="map     映射                一个对一个"></a>map     映射                一个对一个</h4><p>[12,25,99,86,45,91]<br>[不及格,不及格,及格,及格,不及格,及格]</p>
+<p>[1,2,3,5]<br>[<br>name:ss,<br>]<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr=[<span class="number">12</span>,<span class="number">5</span>,<span class="number">8</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result=arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> item* <span class="number">2</span> ;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result=arr.map(<span class="function"><span class="params">item</span>=&gt;</span>item*<span class="number">2</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> score=[<span class="number">19</span>,<span class="number">85</span>,<span class="number">99</span>,<span class="number">25</span>,<span class="number">90</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result=score.map(<span class="function"><span class="params">item</span>=&gt;</span>item&gt;=<span class="number">60</span>?<span class="string">'及格'</span>:<span class="string">'不及格'</span>);</span></pre></td></tr></table></figure></p>
+<h4 id="reduce-汇总-一堆出来一个"><a href="#reduce-汇总-一堆出来一个" class="headerlink" title="reduce     汇总                一堆出来一个"></a>reduce     汇总                一堆出来一个</h4><pre><code>算个总数
+[12,80000,59999] =&gt;
+算个平均数
+[12,59,99]  =&gt;
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr=[<span class="number">12</span>,<span class="number">69</span>,<span class="number">180</span>,<span class="number">8763</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">temp,item,index</span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> temp+item;<span class="comment">//求和</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr=[<span class="number">12</span>,<span class="number">69</span>,<span class="number">180</span>,<span class="number">8763</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">arr.reduce(<span class="function">(<span class="params">temp,item,index</span>)=&gt;</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span>(index!=arr.lenght)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> temp+item;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span>	(temp+item)/arr.length;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;)</span></pre></td></tr></table></figure>
+<h4 id="filter-过滤器"><a href="#filter-过滤器" class="headerlink" title="filter    过滤器"></a>filter    过滤器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr=[<span class="number">12</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">99</span>,<span class="number">27</span>,<span class="number">36</span>,<span class="number">75</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span>(item%<span class="number">3</span>==<span class="number">0</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	&#125;<span class="keyword">else</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>item%<span class="number">3</span>==<span class="number">0</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	&#123;<span class="attr">title</span>:<span class="string">'男士衬衫'</span>,<span class="attr">price</span>:<span class="number">75</span>&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	&#123;<span class="attr">title</span>:<span class="string">'女士包'</span>,<span class="attr">price</span>:<span class="number">57842</span>&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	&#123;<span class="attr">title</span>:<span class="string">''</span>,<span class="attr">price</span>:<span class="number">65</span>&#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	&#123;<span class="attr">title</span>:<span class="string">''</span>,<span class="attr">price</span>:<span class="number">27531</span>&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> result = arr.filter(<span class="function"><span class="params">json</span>=&gt;</span>json.price&gt;=<span class="number">1000</span>);</span></pre></td></tr></table></figure>
+<h4 id="forEach-循环（迭代）"><a href="#forEach-循环（迭代）" class="headerlink" title="forEach    循环（迭代）"></a>forEach    循环（迭代）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>	arr=[<span class="number">12</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	alert(item);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	alert(inde+<span class="string">':'</span>+item);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h4 id="startWith"><a href="#startWith" class="headerlink" title="startWith"></a>startWith</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">'https://cleave.site'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(str.startWith(<span class="string">'https://'</span>))&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	alert(<span class="string">'加密网址'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(str.startWith(<span class="string">'http://'</span>))&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	alert(<span class="string">'普通网址'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure>
+<h4 id="endsWith"><a href="#endsWith" class="headerlink" title="endsWith"></a>endsWith</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">'image.png'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(str.endsWith(<span class="string">'.png'</span>))&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	alert(<span class="string">'png格式图片'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>()</span></pre></td></tr></table></figure>
+<h4 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h4><p>i.直接把东西塞到字符串里面 ${东西}<br>ii.可以折行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> title=<span class="string">''</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> content=<span class="string">''</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str=<span class="string">'&lt;div&gt;\</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">	&lt;h1&gt;'</span>+title+<span class="string">'&lt;/h1&gt;\</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="string">	&lt;p&gt;'</span>+content+<span class="string">'&lt;/p&gt;\</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">	&lt;/div&gt;'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str2=<span class="string">`&lt;div&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">	&lt;h1&gt;<span class="subst">$&#123;title&#125;</span>&lt;/h1&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">	&lt;p&gt;<span class="subst">$&#123;content&#125;</span>&lt;/p&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="string">	&lt;/div&gt;`</span>;</span></pre></td></tr></table></figure>
+<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>原来的方式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name,pass</span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">this</span>.name=name;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">this</span>.pass=pass;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">User.prototype.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	alert(<span class="keyword">this</span>.name);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">User.prototype.showPass=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	alert(<span class="keyword">this</span>.pass);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;;</span></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Bellec
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/https:/afterwinter.net/2019/12/06/ES6/" title="ES6梗概">https://afterwinter.net/2019/12/06/ES6/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES6/" rel="tag"># ES6</a>
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/10/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%8F%8A%E7%BC%96%E7%A0%81/" rel="prev" title="二进制数的表示及编码">
+      <i class="fa fa-chevron-left"></i> 二进制数的表示及编码
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/30/%E7%AE%80%E8%BF%B0%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" rel="next" title="简述网络协议">
+      简述网络协议 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">1.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#let和const"><span class="nav-number">1.1.</span> <span class="nav-text">let和const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.2.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的参数"><span class="nav-number">1.3.</span> <span class="nav-text">函数的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值"><span class="nav-number">1.4.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.5.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map-映射-一个对一个"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">map     映射                一个对一个</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reduce-汇总-一堆出来一个"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">reduce     汇总                一堆出来一个</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter-过滤器"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">filter    过滤器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach-循环（迭代）"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">forEach    循环（迭代）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.6.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#startWith"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">startWith</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#endsWith"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">endsWith</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串模板"><span class="nav-number">1.6.0.3.</span> <span class="nav-text">字符串模板</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象"><span class="nav-number">1.7.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bellec"
+      src="https://cdn.jsdelivr.net/gh/liu3142/CDN@master/img/cat_w.png">
+  <p class="site-author-name" itemprop="name">Bellec</p>
+  <div class="site-description" itemprop="description">人间俯仰成今古，何地他时始惘然</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liu3142" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liu3142" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liu3142@foxmail.com" title="E-Mail → mailto:liu3142@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bellec</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">4k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
