@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基于hexo个人博客的构建</title>
+    <url>/2020/01/01/%E5%9F%BA%E4%BA%8Ehexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%9E%84%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="基于hexo个人博客的构建"><a href="#基于hexo个人博客的构建" class="headerlink" title="基于hexo个人博客的构建"></a>基于hexo个人博客的构建</h1><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><pre><code>hexo的使用有两种方法:一种是基于第三方代码托管平台提供的Pages 服务，另一种是基于自建服务器的web服务。
+两种方式没有本质上的区别，但由于第三方代码托管平台提供的Pages 服务所用的服务器通常在中国大陆以外，所以访问速度比较慢。且域名无法备案，而无法备案的域名无法使用中国大陆网络服务商的提供的CDN服务，故而访问速度优化方式比较有限。但也有解决方法，后面讲访问速度优化时会讲。
+基于自建服务器搭建的个人博客，其访问速度由服务器配置和带宽速度来决定。当访问量较小且数据交互较少时推荐使用。当然考虑成本因素，自建服务器的成本较高，不过推荐对服务器感兴趣的、喜欢折腾的同学使用。
+</code></pre><h3 id="使用第三方代码托管平台提供的Pages-服务"><a href="#使用第三方代码托管平台提供的Pages-服务" class="headerlink" title="使用第三方代码托管平台提供的Pages 服务"></a>使用第三方代码托管平台提供的Pages 服务</h3><pre><code>我个人使用过GitHub和Coding(Coding.net，已经和腾讯开发者平台合并)。其中GitHub的访问速度众所周知，Coding访问速度尚佳，但仍不如自建服务器。
+其他有类似服务的有:gitee(码云)、gitlab、gitea等等.不同平台的不同功能请自己摸索.
+下面用GitHub和coding演示类似平台的使用方法
+</code></pre><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><h4 id="GitHub账号相关"><a href="#GitHub账号相关" class="headerlink" title="GitHub账号相关"></a>GitHub账号相关</h4><pre><code>1. 注册账号
+2. 新建仓库
+3. 开启Pages 服务
+</code></pre><h3 id="Coding"><a href="#Coding" class="headerlink" title="Coding"></a>Coding</h3><pre><code>1. 注册账号
+2. 新建仓库
+3. 开启Pages 服务
+</code></pre><h4 id="腾讯开发者平台账号"><a href="#腾讯开发者平台账号" class="headerlink" title="腾讯开发者平台账号"></a>腾讯开发者平台账号</h4><pre><code>平台地址:https://dev.tencent.com/
+</code></pre>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>集合</title>
     <url>/2019/12/16/%E7%A6%BB%E6%95%A3/</url>
     <content><![CDATA[<p>集合的特征:确定性、互异性、无序性</p>
